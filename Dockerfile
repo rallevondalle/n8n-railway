@@ -5,7 +5,7 @@ FROM n8nio/n8n:latest
 USER root
 
 # Install the missing module
-RUN cd /usr/local/lib/node_modules/n8n && npm install youtube-transcript
+RUN npm install -g youtube-transcript
 
 # Switch back to node user (n8n requires this)
 USER node
