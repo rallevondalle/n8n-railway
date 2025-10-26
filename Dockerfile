@@ -13,8 +13,3 @@ RUN mkdir -p /home/node/.n8n/custom-extensions && \
 
 # Switch back to node user
 USER node
-```
-
-And add this environment variable in Railway:
-```
-N8N_CUSTOM_EXTENSIONS=/home/node/.n8n/custom-extensions/node_modules
