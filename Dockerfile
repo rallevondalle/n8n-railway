@@ -4,8 +4,17 @@ FROM n8nio/n8n:latest
 # Switch to root to install packages
 USER root
 
-# Install using pnpm which n8n uses
-RUN pnpm add -g youtube-transcript
+# Create custom node modules directory and install there
+RUN mkdir -p /home/node/.n8n/custom-extensions && \
+    cd /home/node/.n8n/custom-extensions && \
+    npm init -y && \
+    npm install youtube-transcript && \
+    chown -R node:node /home/node/.n8n
 
 # Switch back to node user
 USER node
+```
+
+And add this environment variable in Railway:
+```
+N8N_CUSTOM_EXTENSIONS=/home/node/.n8n/custom-extensions/node_modules
